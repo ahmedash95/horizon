@@ -22,7 +22,8 @@ class WorkerCommandString
         $command = str_replace('@php', PhpBinary::path(), static::$command);
 
         return sprintf(
-            "%s {$options->connection} %s",
+            "%s %s {$options->connection} %s",
+            config('horizon.worker_env', ''),
             $command,
             static::toOptionsString($options)
         );
